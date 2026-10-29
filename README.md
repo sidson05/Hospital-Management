@@ -26,6 +26,7 @@ Small clinics and outpatient clinics rely on manual registers and phone calls, c
 
 - **Java**: 17 LTS / JDK 24 compatible
 - **Framework**: Spring Boot 3.3.5
+- **Frontend**: React 18, Vite, React Router v6, Botanical Glassmorphic Design System (plain CSS with design tokens)
 - **Persistence**: Spring Data JPA & Hibernate 6
 - **Database**: PostgreSQL 16 (production) / H2 in PostgreSQL compatibility mode (dev/test)
 - **Database Migrations**: Flyway Core & Flyway PostgreSQL
@@ -193,11 +194,32 @@ docker compose up -d
 .\mvnw.cmd spring-boot:run -Dspring-boot.run.profiles=prod
 ```
 
-### Accessing Interactive Documentation & Consoles
+### Accessing the Web Application & Interactive Consoles
+
+- **Hospital Web Portal (Production / Direct UI)**: [http://localhost:8080/](http://localhost:8080/)
+  > **No JDBC URL required**: Users, doctors, and administrators can navigate directly to the website at `http://localhost:8080/` to register or sign in with the seed credentials, browse doctors, book slots, manage queues, and view analytics.
+- **Frontend Development Server (Vite Hot-Reloading)**: [http://localhost:5173/](http://localhost:5173/)
 - **Swagger UI**: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 - **OpenAPI JSON**: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
-- **H2 Console** (in `dev` mode): [http://localhost:8080/h2-console](http://localhost:8080/h2-console) (JDBC URL: `jdbc:h2:mem:hospital_db`, User: `sa`, Password: empty)
+- **H2 Database Console** (optional internal debugging in `dev` mode): [http://localhost:8080/h2-console](http://localhost:8080/h2-console) (JDBC URL: `jdbc:h2:mem:hospital_db`, User: `sa`, Password: empty)
 - **Mailpit Web UI** (when running docker-compose): [http://localhost:8025](http://localhost:8025)
+
+### Running the Frontend Development Server
+
+The modern botanical glassmorphic UI is located in `frontend/`:
+
+```bash
+# 1. Install frontend dependencies
+cd frontend
+npm install
+
+# 2. Run the Vite development server with proxy to backend
+npm run dev
+
+# 3. (Optional) Rebuild and sync static bundle into Spring Boot
+cd ..
+powershell -ExecutionPolicy Bypass -File .\deploy-to-spring.ps1
+```
 
 ### Running Automated Concurrency & Unit Tests
 
