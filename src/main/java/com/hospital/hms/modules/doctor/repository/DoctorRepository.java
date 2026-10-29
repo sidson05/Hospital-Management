@@ -1,7 +1,9 @@
 package com.hospital.hms.modules.doctor.repository;
 
 import com.hospital.hms.modules.doctor.entity.Doctor;
+import jakarta.persistence.LockModeType;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Lock;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -19,8 +21,7 @@ public interface DoctorRepository extends JpaRepository<Doctor, UUID> {
 
     boolean existsByLicenseNumber(String licenseNumber);
 
-    @jakarta.persistence.LockModeType.PESSIMISTIC_WRITE
-    @org.springframework.data.jpa.repository.Lock(jakarta.persistence.LockModeType.PESSIMISTIC_WRITE)
+    @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT d FROM Doctor d WHERE d.id = :id")
     Optional<Doctor> findByIdWithLock(@Param("id") UUID id);
 
