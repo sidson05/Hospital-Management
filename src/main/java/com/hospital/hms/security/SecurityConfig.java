@@ -87,6 +87,11 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/",
                                 "/index.html",
+                                "/login",
+                                "/book",
+                                "/appointments",
+                                "/reports",
+                                "/assets/**",
                                 "/css/**",
                                 "/js/**",
                                 "/images/**",
@@ -99,7 +104,7 @@ public class SecurityConfig {
                                 "/error"
                         ).permitAll()
                         // Public doctor directory & slot browsing
-                        .requestMatchers(HttpMethod.GET, "/api/v1/doctors/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/doctors", "/api/v1/doctors/**").permitAll()
 
                         // Role-specific endpoints
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")

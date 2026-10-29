@@ -1,0 +1,246 @@
+/* Glassmorphic Recipe & Visual Utilities */
+
+.glass-panel {
+  background: var(--glass);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+  border-radius: var(--radius-panel);
+}
+
+.glass-panel-sm {
+  background: var(--glass);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+  border-radius: var(--radius-panel-sm);
+}
+
+.glass-strong {
+  background: var(--glass-strong);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), var(--glass-shadow);
+}
+
+.glass-card {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), 0 10px 24px -16px rgba(24, 48, 40, 0.2);
+  border-radius: var(--radius-card);
+}
+
+.glass-row {
+  background: var(--glass);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), 0 8px 18px -12px rgba(24, 48, 40, 0.16);
+  border-radius: var(--radius-row);
+}
+
+/* Glass Shimmer Skeleton (no spinners) */
+.glass-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--glass) 0%,
+    var(--glass-strong) 50%,
+    var(--glass) 100%
+  );
+  background-size: 200% 100%;
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-row);
+  animation: glassShimmer 1.8s infinite ease-in-out;
+}
+
+@keyframes glassShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-skeleton {
+    animation: none;
+    background: var(--glass-strong);
+  }
+}
+
+/* Button & interactive glass styling */
+.btn-glass {
+  background: var(--glass);
+  color: var(--ink);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius-btn);
+  padding: 10px 20px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 var(--glass-edge), 0 6px 14px -8px rgba(24, 48, 40, 0.2);
+  transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-glass:hover:not(:disabled) {
+  background: var(--glass-strong);
+  border-color: var(--brass);
+}
+
+.btn-glass:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-pine {
+  background: var(--pine);
+  color: var(--on-pine);
+  border: 1px solid var(--pine);
+  border-radius: var(--radius-btn);
+  padding: 10px 22px;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 12px 24px -10px rgba(36, 73, 62, 0.4);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.btn-pine:hover:not(:disabled) {
+  opacity: 0.92;
+  border-color: var(--brass);
+}
+
+.btn-pine:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.btn-brass-outline {
+  background: transparent;
+  color: var(--brass);
+  border: 1px solid var(--brass);
+  border-radius: var(--radius-btn);
+  padding: 8px 16px;
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn-brass-outline:hover:not(:disabled) {
+  background: var(--brass-soft);
+}
+
+/* Status chips */
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: capitalize;
+  border: 1px solid transparent;
+}
+
+.status-chip.booked {
+  color: var(--status-booked);
+  background: var(--status-booked-bg);
+  border-color: rgba(63, 111, 138, 0.3);
+}
+
+.status-chip.completed {
+  color: var(--status-completed);
+  background: var(--status-completed-bg);
+  border-color: rgba(76, 124, 88, 0.3);
+}
+
+.status-chip.cancelled {
+  color: var(--status-cancelled);
+  background: var(--status-cancelled-bg);
+  border-color: rgba(143, 90, 82, 0.3);
+}
+
+.status-chip.noshow {
+  color: var(--status-noshow);
+  background: var(--status-noshow-bg);
+  border-color: rgba(168, 132, 63, 0.3);
+}
+
+/* HMS Toast Component */
+.hms-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9999;
+  background: var(--glass-strong);
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  border: 1px solid var(--glass-edge);
+  box-shadow: inset 0 1px 0 var(--glass-edge), 0 20px 40px -15px rgba(24, 48, 40, 0.4);
+  border-radius: var(--radius-card);
+  padding: 14px 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  animation: toastFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes toastFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hms-toast {
+    animation: none;
+  }
+}
+
+.toast-icon {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--pine);
+  color: var(--on-pine);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.82rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.toast-error .toast-icon {
+  background: var(--status-cancelled);
+  color: #fff;
+}

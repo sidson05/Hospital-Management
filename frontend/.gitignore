@@ -1,0 +1,7 @@
+# Node & Frontend dependencies
+node_modules/
+dist/
+dist-ssr/
+*.local
+.npm
+.eslintcache
